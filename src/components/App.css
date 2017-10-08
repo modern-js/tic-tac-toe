@@ -106,3 +106,22 @@ svg {
   animation-name: char-appear;
   animation-duration: .22s;
 }
+
+.board.won-row0 .row0 .char,
+.board.won-row1 .row1 .char,
+.board.won-row2 .row2 .char,
+.board.won-column0 .char.column0,
+.board.won-column1 .char.column1,
+.board.won-column2 .char.column2,
+.board.won-leftDiag .row0 .char.column0,
+.board.won-leftDiag .row1 .char.column1,
+.board.won-leftDiag .row2 .char.column2,
+.board.won-rightDiag .row0 .char.column2,
+.board.won-rightDiag .row1 .char.column1,
+.board.won-rightDiag .row2 .char.column0 {
+  background-color: mediumseagreen;
+}
+
+.board.draw .char {
+  background-color: lightcoral;
+}
