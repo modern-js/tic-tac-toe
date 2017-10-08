@@ -1,0 +1,108 @@
+.app {
+  font-family: Courier New, Courier, monospace;
+  margin: 0 auto;
+}
+
+.app-logo {
+  height: 80px;
+  display: block;
+  margin: auto;
+}
+
+.app-header {
+  background-color: #222;
+  height: 200px;
+  color: white;
+  padding: 20px;
+}
+
+.app-title {
+  font-size: 1.5em;
+}
+
+.app-intro {
+  font-size: large;
+  margin: auto;
+  width: 20%;
+}
+
+h1 {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  text-align: center;
+}
+
+.announcement {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+}
+
+.restart {
+  margin: 10px auto;
+  width: 100%;
+  font-size: large;
+  border-radius: 4px;
+  background-color: red;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1em;
+  padding: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.restart span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.restart span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.restart:hover span {
+  padding-right: 25px;
+}
+
+.restart:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.char {
+  background-color: white;
+  border: 2px solid darkgray;
+  height: 100px;
+  margin: 1px;
+  transition: background-color .5s ease;
+  width: 100px;
+}
+
+.row {
+  display: flex;
+}
+
+@keyframes char-appear {
+  from {
+    transform: scale(4.0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+svg {
+  animation-name: char-appear;
+  animation-duration: .22s;
+}
