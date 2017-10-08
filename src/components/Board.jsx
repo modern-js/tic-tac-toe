@@ -8,10 +8,6 @@ import { X, O } from '../characters/characters';
 import { makeMove, restart } from '../actions/actions';
 
 class Board extends Component {
-  makeMove(rowIndex, position, char) {
-    !this.props.won && this.props.makeMove(rowIndex, position, char);
-  }
-
   getChar(rowIndex, position, char) {
     if (char === X) {
       return <XChar key={position} position={position} />;
@@ -19,34 +15,42 @@ class Board extends Component {
     if (char === O) {
       return <OChar key={position} position={position} />;
     }
-    return <EmptyBox key={position} makeMove={this.makeMove.bind(this, rowIndex, position)} turn={this.props.turn} />;
+    return (<EmptyBox
+      key={position}
+      makeMove={this.makeMove.bind(this, rowIndex, position)} turn={this.props.turn} />);
+  }
+
+  makeMove(rowIndex, position, char) {
+    !this.props.won && this.props.makeMove(rowIndex, position, char);
   }
 
   render() {
     const wonClass = this.props.won ? ` won-${this.props.wonLine}` : '';
     const drawClass = this.props.draw ? ' draw' : '';
-    const boardClass = 'board' + wonClass + drawClass;
+    const boardClass = `board${wonClass}${drawClass}`;
     return (
       <div className={boardClass}>
         {
           Object.keys(this.props.board)
-            .map(rowIndex => {
-              return (
+            .map((rowIndex) => {
+              const result = (
                 <div className={`row row${rowIndex}`} key={rowIndex}>
                   {
                     this.props.board[rowIndex].map((char, positon) => {
-                      return this.getChar(rowIndex, positon, char);
+                      const rowChar = this.getChar(rowIndex, positon, char);
+                      return rowChar;
                     })
                   }
                 </div>
               );
+              return result;
             })
         }
         {
           this.props.won || this.props.draw ?
             <button className="restart" onClick={this.props.restart}>
               <span>Restart</span>
-          </button> : false
+            </button> : false
         }
       </div>
     );
@@ -54,7 +58,11 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  board: PropTypes.object.isRequired,
+  board: PropTypes.shape({
+    0: PropTypes.arrayOf(PropTypes.string),
+    1: PropTypes.arrayOf(PropTypes.string),
+    2: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
   turn: PropTypes.string.isRequired,
   won: PropTypes.string,
   draw: PropTypes.bool.isRequired,
@@ -63,12 +71,27 @@ Board.propTypes = {
   restart: PropTypes.func.isRequired,
 };
 
+Board.defaultProps = {
+  won: false,
+  wonLine: '',
+};
+
 export default connect(
-  ({ board, turn, won, draw, wonLine }) => ({
-    board, turn, won, draw, wonLine,
+  ({
+    board,
+    turn,
+    won,
+    draw,
+    wonLine,
+  }) => ({
+    board,
+    turn,
+    won,
+    draw,
+    wonLine,
   }),
   (dispatch) => {
-    return {
+    const result = {
       makeMove(rowIndex, position, char) {
         dispatch(makeMove(rowIndex, position, char));
       },
@@ -76,7 +99,6 @@ export default connect(
         dispatch(restart());
       },
     };
-  }
+    return result;
+  },
 )(Board);
-
-export { Board } ;

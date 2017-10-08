@@ -1,4 +1,3 @@
-/* eslint-disable */
 import * as _ from 'lodash';
 import { X, O } from '../characters/characters';
 import { resultForMove } from '../rules/gameRules';
@@ -19,7 +18,7 @@ export const startingState = {
 
 export const actionReducer = (state, action) => {
   switch (action.type) {
-    case actionType.MAKE_MOVE:
+    case actionType.MAKE_MOVE: {
       const { char, row, position } = action;
       const newState = _.cloneDeep(state);
       newState.board[row][position] = char;
@@ -44,20 +43,25 @@ export const actionReducer = (state, action) => {
       const boardIsFull = [
         ...newState.board[0],
         ...newState.board[1],
-        ...newState.board[2]
-      ].filter(char => char !== '').length === 9;
+        ...newState.board[2],
+      ].filter(el => el !== '').length === 9;
 
       if (!newState.won && boardIsFull) {
         newState.draw = true;
       }
       return newState;
-    case actionType.RESTART:
+    }
+    case actionType.RESTART: {
       return startingState;
-    case actionType.COMPUTER_MOVE:
+    }
+    case actionType.COMPUTER_MOVE: {
       const pcPlayer = action.computer;
-      return newState
+      const newState = _.cloneDeep(state);
+      newState.computer = pcPlayer;
+      return newState;
+    }
     default:
       return state;
   }
-}
+};
 

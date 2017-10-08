@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const EmptyBox = (props) => {
-  return (
-    <div className="char char--empty" onClick={() => props.makeMove(props.turn)}>
-    </div>
-  );
+  const result = <div className="char char--empty" onClick={() => props.makeMove(props.turn)}></div>
+  return result;
 };
 
 EmptyBox.propTypes = {
