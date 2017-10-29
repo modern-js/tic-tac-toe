@@ -12,6 +12,8 @@ For the second part of the homework, I have added test coverage almost all parts
 
 ```
 <img width="812" alt="coveragereport" src="https://user-images.githubusercontent.com/15000010/32146266-39297d92-bcdd-11e7-91d3-340f52c9f670.png">
+
+
 ## Installing
 ```
 npm install
