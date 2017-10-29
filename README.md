@@ -1,6 +1,17 @@
 # Tic Tac Toe
 
+## Homework Part 2
+### Testing
 
+```
+For the second part of the homework, I have added test coverage almost all parts of the application:
+
+- The reducer
+- The Board, EmptyBox and Announcement components
+- The game rules
+
+
+```
 ## Installing
 ```
 npm install
@@ -24,4 +35,4 @@ Medium - I followed closely an article on implementing redux and react-redux for
 
 ## Summary
 
-The project was a lot of fun and I learnt a lot of stuff. I need to finish working on the player vs computer. 
+The project was a lot of fun and I learnt a lot of stuff. I need to finish working on the player vs computer.
