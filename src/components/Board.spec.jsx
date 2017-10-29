@@ -7,10 +7,10 @@ import { X, O } from '../characters/characters';
 import { PureBoard as Board } from './Board';
 
 const board = {
-    0: [X, '', ''],
-    1: ['', '', O],
-    2: [X, O, O],
-  };
+  0: [X, '', ''],
+  1: ['', '', O],
+  2: [X, O, O],
+};
 
 it('Should render the Board component with characters', () => {
   const restart = jest.fn();
