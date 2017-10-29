@@ -28,7 +28,7 @@ Announcement.propTypes = {
 };
 
 Announcement.defaultProps = {
-  won: false,
+  won: undefined,
 };
 
 export default connect(({ won, turn, draw }) => ({

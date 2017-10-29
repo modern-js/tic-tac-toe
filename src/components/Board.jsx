@@ -72,7 +72,7 @@ Board.propTypes = {
 };
 
 Board.defaultProps = {
-  won: false,
+  won: undefined,
   wonLine: '',
 };
 
