@@ -102,3 +102,5 @@ export default connect(
     return result;
   },
 )(Board);
+
+export { Board as PureBoard };

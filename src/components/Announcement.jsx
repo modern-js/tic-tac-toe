@@ -35,3 +35,4 @@ export default connect(({ won, turn, draw }) => ({
   won, turn, draw,
 }))(Announcement);
 
+export { Announcement as PureAnnouncemnt };
